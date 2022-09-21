@@ -1,23 +1,29 @@
-import string
-from time import sleep
-alphabet = string.ascii_lowercase 
-def decrypt():
-    print("Welcome to Caesar Cipher Decryption.\n")
-    encrypted_message = input("Enter the message you would like to decrypt: ").strip()
-    print()
-    key = int(input("Enter key to decrypt: "))
-    decrypted_message = ""
-    for c in encrypted_message:
-
-        if c in alphabet:
-            position = alphabet.find(c)
-            new_position = (position - key) % 26
-            new_character = alphabet[new_position]
-            decrypted_message += new_character
-        else:
-            decrypted_message += c
-
-    print("Your decrypted message is:\n")
-    print(decrypted_message)
-
-decrypt()
+ #include<stdio.h>
+ 
+int main()
+{
+char message[100], ch;
+int i, key;
+printf("Enter a message to decrypt: ");
+gets(message);
+printf("Enter key: ");
+scanf("%d", &key);
+for(i = 0; message[i] != '\0'; ++i){
+ch = message[i];
+if(ch >= 'a' && ch <= 'z'){
+ch = ch - key;
+if(ch < 'a'){
+ch = ch + 'z' - 'a' + 1;
+}
+message[i] = ch;
+}
+else if(ch >= 'A' && ch <= 'Z'){
+ch = ch - key;
+if(ch < 'A'){
+ch = ch + 'Z' - 'A' + 1;
+}
+message[i] = ch;
+}
+}
+printf("Decrypted message: %s", message);
+return 0;
